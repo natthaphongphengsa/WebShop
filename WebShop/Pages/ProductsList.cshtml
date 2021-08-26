@@ -1,0 +1,10 @@
+﻿@page
+@model WebShop.Pages.ProductsListModel
+@{
+}
+<div class="grid">
+    @foreach (var item in Model.products)
+    {
+        <div class="g-col-4">@item.Name</div>
+    }
+</div>

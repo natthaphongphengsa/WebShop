@@ -1,0 +1,12 @@
+﻿@page
+@model WebShop.Pages.ProductDetailModel
+@{
+}
+<div class="container">
+    <div class="card-header">
+        <b>@Model.Name</b>
+        <img src="@Model.Image"/>
+        <p>@Model.Price kr</p>
+        @*<a asp-page="/Category" asp-route-id="@Model.Category.Id">@Model.Category.Name</a>*@
+    </div>
+</div>

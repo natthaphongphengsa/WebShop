@@ -1,0 +1,17 @@
+﻿@page
+@model WebShop.Pages.SearchProductsModel
+@{
+}
+<h1>Du sökte på @Model.SeachInput</h1>
+<div class="row">
+    @foreach (var item in Model.products)
+    {
+        <div class="column col-md-2">
+            <b>@item.Name</b>
+            <a asp-page="/ProductDetail" asp-route-id="@item.Category.Id">
+                <img class="IMG" src="@item.Image" />
+            </a>
+            <p>@item.Price kr</p>
+        </div>
+    }
+</div>
