@@ -27,7 +27,7 @@ namespace WebShop.Pages
 
         public void OnGet(int id)
         {
-            var item = _dbContext.product.First(c => c.Id == id);
+            var item = _dbContext.product.FirstOrDefault(c => c.Id == id);
             Name = item.Name;
             Description = item.Description;
             Price = item.Price;

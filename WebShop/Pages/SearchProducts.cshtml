@@ -2,16 +2,43 @@
 @model WebShop.Pages.SearchProductsModel
 @{
 }
-<h1>Du sökte på @Model.SeachInput</h1>
+@if (Model.SeachInput == null)
+{
+    <h1>Kunde inte hitta!</h1>
+}
+else
+{
+    <h1>Du sökte på @Model.SeachInput</h1>
+}
 <div class="row">
     @foreach (var item in Model.products)
     {
-        <div class="column col-md-2">
-            <b>@item.Name</b>
-            <a asp-page="/ProductDetail" asp-route-id="@item.Category.Id">
-                <img class="IMG" src="@item.Image" />
-            </a>
-            <p>@item.Price kr</p>
+        <div class="column col-md-3">
+            <div class="card" style="height:600px; border:none;">
+                <div class="card-body">
+                    <div class="container" style="height:100px">
+                        <b class="card-title" style="font-size:12px;">@item.Name</b>
+                    </div>
+                    <div class="container" style="height:350px">
+                        <img src="@item.Image" class="card-img align-content-center" alt="...">
+                    </div>
+                    @*<p class="card-text">@item.Description</p>*@
+                    <p class="card-text">@item.Price kr</p>
+                    <a asp-page="/ProductDetail" asp-route-id="@item.Id" class="btn btn-primary">Detail</a>
+                </div>
+            </div>
         </div>
     }
 </div>
+@*<div class="row">
+        @foreach (var item in Model.products)
+        {
+            <div class="column col-md-2">
+                <b>@item.Name</b>
+                <a asp-page="/ProductDetail" asp-route-id="@item.Category.Id">
+                    <img class="IMG" src="@item.Image" />
+                </a>
+                <p>@item.Price kr</p>
+            </div>
+        }
+    </div>*@

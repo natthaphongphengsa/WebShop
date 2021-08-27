@@ -24,22 +24,10 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-info" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Category
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <button type="button" class="dropdown-item btn btn-info btn-sm">Test</button>
-                                @*@foreach (var category in Model)
-                                    {
-                                        <a asp-area="" asp-page="/ProductsList" asp-route-id="@category.Id" class="dropdown-item btn btn-info btn-sm">@category.Name</a>
-                                    }*@
-                            </div>
-                        </li>
                         <li class="nav-item">
-                            <form method="get" action="/SearchProducts">
-                                <input type="text" class="form-control" name="searchinput"/>/
-                                <input type="submit" value="Sök" />
+                            <form method="get" action="/SearchProducts" class="d-flex">
+                                <input type="text" class="form-control" name="searchinput"/>
+                                <input type="submit" value="Sök" class="text-lg-right" />
                             </form>
                         </li>
                     </ul>

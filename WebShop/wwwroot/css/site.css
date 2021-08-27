@@ -74,5 +74,5 @@ body {
 }
 
 .IMG {
-    width: -webkit-fill-available;
+    width: 100%;
 }

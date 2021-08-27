@@ -15,8 +15,9 @@ namespace WebShop.Data
         public static void SeedData(ApplicationDbContext dbContext)
         {
             dbContext.Database.Migrate();
-            SeedCategory(dbContext);
-            SeedProducts(dbContext);
+            SeedAdmin(dbContext);
+            //SeedCategory(dbContext);
+            //SeedProducts(dbContext);
         }
         public static void SeedProducts(ApplicationDbContext dbContext)
         {
@@ -56,6 +57,21 @@ namespace WebShop.Data
                     dbContext.SaveChanges();
                 }
             }
+        }
+        public static void SeedAdmin(ApplicationDbContext dbContext)
+        {            
+            if (!dbContext.Roles.Any(c => c.Name == "Admin"))
+            {
+                dbContext.Roles.Add(new Microsoft.AspNetCore.Identity.IdentityRole("Admin"));                
+            }
+            var role = dbContext.Roles.First(c => c.Name == "Admin");
+            var user = dbContext.Users.First(c => c.UserName == "Natthaphong@hotmail.com");
+            if (!dbContext.UserRoles.Any(r => r.UserId == user.Id))
+            {
+                dbContext.UserRoles.Add(new Microsoft.AspNetCore.Identity.IdentityUserRole<string>() { RoleId = role.Id, UserId = user.Id });
+            }
+
+            dbContext.SaveChanges();
         }
     }
 }
